@@ -1,0 +1,20 @@
+
+0、配置环境
+    VirtualBox
+    将 nasm2 与 tools 添加到 PATH环境变量中
+
+1、磁盘文件创建
+    工具: diskpart
+    命令: create vdisk file=D:\GXOS\Image\gxos.vhd maximum=10 type=fixed
+
+2、编译汇编文件
+    命令: nasm.exe .\OSCode\hello.asm -o .\OSCode\boot.bin
+   
+3、将镜像写入磁盘文件
+    命令: dd if=.\OSCode\boot.bin of=.\Image\gxos.vhd bs=512 count=1
+
+
+
+
+
+
