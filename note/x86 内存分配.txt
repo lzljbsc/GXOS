@@ -1,0 +1,40 @@
+
+FFFFF
+        BIOS的入口地址
+FFFF0
+FFFEF   
+        系统的BIOS范围
+F0000
+EFFFF
+        硬件适配器的ROM
+C8000
+C7FFF
+        显示适配器的BIOS
+C0000
+BFFFF
+        文本模式的显示适配器
+B8000
+B7FFF
+        黑白显示适配器
+B0000
+AFFFF
+        彩色显示适配器
+A0000
+9FFFF
+        扩展的BIOS数据区
+9FC00
+9FBFF
+        可用区域
+07E00
+07DFF
+        MBR被BIOS加载到此处，只有512字节
+07C00
+07BFF
+        可用区域
+00500
+004FF
+        BIOS数据区(256个字节)
+00400
+003FF
+        中断向量表(1KB)
+00000
