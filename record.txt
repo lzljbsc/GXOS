@@ -13,6 +13,14 @@
 3、将镜像写入磁盘文件
     命令: dd if=.\OSCode\boot.bin of=.\Image\gxos.vhd bs=512 count=1
 
+4、寻址方式:
+    立即数寻址: mov ax, 0x1800
+                mov ds, ax
+    内存寻址:   mov ax, [fs: 0x1234]
+    基址寻址:   在操作数中, 用bx寄存器作为地址的开始(实模式).
+    寄存器 bx 的默认的段寄存器是 DS
+    bp, sp 的默认的段寄存器是 SS
+
 
 
 
