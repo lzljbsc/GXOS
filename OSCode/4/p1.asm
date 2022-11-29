@@ -30,13 +30,13 @@ org 07c00h
 ; GDT
 ;                                         段基址,      段界限     , 属性
 LABEL_GDT:		Descriptor	       0,                0, 0     		; 空描述符
-LABEL_DESC_CODE32:	Descriptor	       0, SegCode32Len - 1, DA_C + DA_32	; 非一致代码段, 32
+LABEL_DESC_CODE32:	Descriptor	       0, SegCode32Len - 1, DA_C + DA_32	; 非一致代码段, 32  实际的段基址在程序中设置
 LABEL_DESC_VIDEO:	Descriptor	 0B8000h,           0ffffh, DA_DRW		; 显存首地址
 ; GDT 结束
 
 GdtLen		equ	$ - LABEL_GDT	; GDT长度
 GdtPtr		dw	GdtLen - 1	; GDT界限
-		dd	0		; GDT基地址
+		dd	0		; GDT基地址, 由 " ; 为加载 GDTR 作准备 " 这段程序改写
 
 ; GDT 选择子
 SelectorCode32		equ	LABEL_DESC_CODE32	- LABEL_GDT
@@ -54,7 +54,7 @@ LABEL_BEGIN:
 
 	; 初始化 32 位代码段描述符
 	xor	eax, eax  
-	mov	ax, cs
+	mov	ax, cs          ; 因为有 org 07c00h, 此处的 cs 实际为 0
 	shl	eax, 4
 	add	eax, LABEL_SEG_CODE32
 	mov	word [LABEL_DESC_CODE32 + 2], ax

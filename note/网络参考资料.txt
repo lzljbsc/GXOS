@@ -1,0 +1,5 @@
+NASM 中的ORG 指令简介
+https://blog.csdn.net/hzhandsome/article/details/8392910
+
+
+
